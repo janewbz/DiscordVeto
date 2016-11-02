@@ -29,15 +29,15 @@ async def on_message(message):
                 if message.author == client.user:
                     print("caught bot trying to reply to itself")
                     return
-                await client.send_message(message.channel, "Maps left: " + ','.join(maps))
-                await client.send_message(message.channel, "Enter your veto (for example de_dust2)")
+                await client.send_message(message.channel, "Mapas restantes: " + ','.join(maps))
+                await client.send_message(message.channel, "Descartar mapa (por ejemplo de_dust2)")
                 messageobj = await client.wait_for_message()
                 userVeto = messageobj.content
                 print(messageobj.author,"vetoed: ",userVeto)
                 if any(userVeto in s for s in maps):
                     maps.remove(userVeto)
                     print("removed map, the current pool is: ",maps)
-                    await client.send_message(message.channel, "Removed " + userVeto)
+                    await client.send_message(message.channel, "Descartado " + userVeto)
 
 
 #Display account info when logged in
